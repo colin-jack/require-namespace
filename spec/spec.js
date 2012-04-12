@@ -37,4 +37,6 @@ vows.describe('require all files in directory').addBatch({
 // TODO: No "/" at end of path.
 // TODO: Invalid path.
 // TODO: Multiple files with same name.
-// TOOD: Directory does not exist.
+// TODO: Directory does not exist.
+// TODO: Ignore casing
+// TODO: Example
