@@ -18,11 +18,11 @@ In this last snippet of code we first get the domain namespace and then use it t
 ## Examples
 Directory structure
 
-- domain
-  - authentication
-    - user.js
-    - twitter
-      - twitterAuthentication.js
+ domain
+   authentication
+     user.js
+     twitter
+      twitterAuthentication.js
 
 ```js
 namespace.create('domain', __dirname + '/server/javascript/domain/', done)
