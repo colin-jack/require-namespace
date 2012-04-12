@@ -1,12 +1,12 @@
 {
-  "name" : "namespace",
+  "name" : "require-namespace",
   "version" : "0.0.1",
   "description" : "Simplifies requiring of modules by adding an intermediate namespace, where each namespace is associated with a directory.",
   "main" : "index",
   "author": "Colin Jack",
   "dependencies": {
   	"winston": "*",
-	  "async": "*",
+	"async": "*",
     "underscore": "*"
   },
   "devDependencies": {

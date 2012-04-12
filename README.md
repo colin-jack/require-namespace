@@ -19,10 +19,10 @@ In this last snippet of code we first get the domain namespace and then use it t
 Directory structure
 
 ```
- domain
-   authentication
-     user.js
-     twitter
+domain
+  authentication
+    user.js
+    twitter
       twitterAuthentication.js
 ```
 
