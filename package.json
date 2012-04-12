@@ -1,0 +1,16 @@
+{
+  "name" : "namespace",
+  "version" : "0.0.1",
+  "description" : "Simplifies requiring of modules by adding an intermediate namespace, where each namespace is associated with a directory.",
+  "main" : "index",
+  "author": "Colin Jack",
+  "dependencies": {
+  	"winston": "*",
+	  "async": "*",
+    "underscore": "*"
+  },
+  "devDependencies": {
+    "vows": "0.6.x"
+  },
+  "engines": { "node": ">= 0.4.0" }
+}
