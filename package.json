@@ -1,6 +1,6 @@
 {
   "name" : "require-namespace",
-  "version" : "0.0.2",
+  "version" : "0.0.3",
   "description" : "Simplifies requiring of modules by adding an intermediate namespace, where each namespace is associated with a directory.",
   "main" : "index",
   "author": "Colin Jack",
