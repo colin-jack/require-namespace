@@ -73,9 +73,9 @@ Namespace.prototype.lazilyExportFile = function(file, fullPathToFile, done) {
         // if you export a function directly then you want to be able to call it directly on the namespace, so
         // if you export a function from "hello.js" then you want to be able to call namespace.hello() not
         // namespace.hello()()
-//        if (typeof required == "function") {
-//            return required();
-//        }
+        if (typeof required == "function") {
+            return required();
+        }
 
         return required;
     };
