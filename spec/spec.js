@@ -1,7 +1,6 @@
 var vows = require('vows'),
 	assert = require('assert'),
-    namespace = require('require-namespace'),
-    log = require('util').log;
+    namespace = require('../index');
 
 var correctReturnValue = 'being returned by dependency';
 
@@ -31,6 +30,15 @@ vows.describe('require all files in directory').addBatch({
 
             assert.equal (root(), correctReturnValue);
         },
+        'we can access the module directly on the namespace': function (err, namespace) {
+            var root = namespace.root();
+
+            assert.equal (root(), correctReturnValue);
+        },
+        'we can access an exported object directly': function(err, namespace) {
+            var exported = namespace.require('exporting_object');
+            assert.equal (exported.getConstantValue(), 89);
+        }
     }
 }).run();
 
@@ -40,3 +48,6 @@ vows.describe('require all files in directory').addBatch({
 // TODO: Directory does not exist.
 // TODO: Ignore casing
 // TODO: Example
+// TODO: No files in directory
+// TODO: useToExtend
+// TODO: Export is for a function

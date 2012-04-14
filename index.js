@@ -27,6 +27,12 @@ Namespace.prototype.lazilyExportAllFiles = function(associatedDir, done) {
     };
 
     var processFiles = function(err, files) {
+        if (!files)
+        {
+            winston.info("No files in directory for namespace.")
+            return;
+        }
+
         async.forEach(files, processFile, function() {
             allDone();
         });
@@ -35,10 +41,14 @@ Namespace.prototype.lazilyExportAllFiles = function(associatedDir, done) {
     fs.readdir(associatedDir, processFiles);
 }
 
+Namespace.prototype.useToExtend = function(toExtend) {
+    _u.extend(toExtend, this);
+};
+
 Namespace.prototype.recursivelyExportFile = function(file, parentDirectory, done) {
     var that = this;
     var fullPathToFile = parentDirectory + file;
-    
+
     fs.stat(fullPathToFile, function(err, fileStats) {
         if (fileStats.isDirectory())
         {
@@ -56,7 +66,19 @@ Namespace.prototype.lazilyExportFile = function(file, fullPathToFile, done) {
 
     winston.info("Registering " + fileNameMinusExtension);
 
-    this[fileNameMinusExtension] = function () { return require(fullPathToFile) };
+    // Wrap it in a function so we only require when the client actually asks for the dependency.
+    this[fileNameMinusExtension] = function () {
+        var required = require(fullPathToFile);
+
+        // if you export a function directly then you want to be able to call it directly on the namespace, so
+        // if you export a function from "hello.js" then you want to be able to call namespace.hello() not
+        // namespace.hello()()
+//        if (typeof required == "function") {
+//            return required();
+//        }
+
+        return required;
+    };
 
     done();
 };
@@ -66,11 +88,11 @@ Namespace.prototype.require = function(dependency) {
     var toReturn = this[dependency]();
     return toReturn;
 }
-    
+
 module.exports = (function() {
     var namespaces = [];
-    
-    var registerNamespace = function(name, associatedDir, done) {        
+
+    var registerNamespace = function(name, associatedDir, done) {
         try
         {
             var group = new Namespace(name, associatedDir);
@@ -81,17 +103,17 @@ module.exports = (function() {
         {
             winston.error('namespace: error registering: "' + ex + '"');
         }
-        
+
         return group;
     };
 
-    var getNamespace = function(groupName) {       
+    var getNamespace = function(groupName) {
         return _u.find(namespaces, function(group) {
             return group.name === groupName;
         });
     }
 
     getNamespace.create = registerNamespace;
-    
+
     return getNamespace;
 })();
