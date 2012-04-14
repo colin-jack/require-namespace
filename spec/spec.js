@@ -37,7 +37,7 @@ vows.describe('require all files in directory').addBatch({
         },
         'we can access an exported object directly': function(err, namespace) {
             var exported = namespace.require('exporting_object');
-            assert.equal (exported.getConstantValue(), 89);
+            assert.equal(exported.getConstantValue(), 89);
         }
     }
 }).run();

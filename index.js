@@ -69,14 +69,6 @@ Namespace.prototype.lazilyExportFile = function(file, fullPathToFile, done) {
     // Wrap it in a function so we only require when the client actually asks for the dependency.
     this[fileNameMinusExtension] = function () {
         var required = require(fullPathToFile);
-
-        // if you export a function directly then you want to be able to call it directly on the namespace, so
-        // if you export a function from "hello.js" then you want to be able to call namespace.hello() not
-        // namespace.hello()()
-        if (typeof required == "function") {
-            return required();
-        }
-
         return required;
     };
 
