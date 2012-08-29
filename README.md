@@ -17,8 +17,10 @@ var TwitterConfigFactory = domain.require('TwitterConfigFactory')
 
 In this last snippet of code we first get the domain namespace and then use it to require 'TwitterConfigFactory'. Its only when we ask for 'TwitterConfigFactory' that file with that same name is required. 
 
+Among the advantages of this approach is it means the code that requires a dependency is more loosely coupled to the directory structure on disk, moving TwitterConfigFactory wouldn't break any code that requires it.
+
 ## Examples
-Directory structure
+Directory structure:
 
 ```
 domain
@@ -28,9 +30,10 @@ domain
       twitterAuthentication.js
 ```
 
+Creating the namespace and then resolving dependencies from it:
+
 ```js
-namespace.create('domain', __dirname + '/server/javascript/domain/', done)
-domain = require('namespace')('domain')
-var twitterAuthentication = domain.require('twitterAuthentication') // NOTE - Doesn't matter that it was in a sub-directory
-var twitterAuthentication = domain.require('user')
+var domain = namespace.create('domain', __dirname + '/server/javascript/domain/', done);
+var twitterAuthentication = domain.require('twitterAuthentication'); // NOTE - Doesn't matter that it was in a sub-directory
+var twitterAuthentication = domain.require('user');
 ```
