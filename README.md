@@ -1,5 +1,7 @@
 ## Node.js Namespaces
 
+NOTE - This project is a very early alpha.
+
 During initialisation you create a namespace and associate it with a directory:
 
 ```js
