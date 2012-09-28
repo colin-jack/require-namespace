@@ -7,60 +7,52 @@ var Namespace = function(name, associatedDir) {
     this.name = name;
 }
 
-Namespace.prototype.importAllFilesInDirectory = function(associatedDir, done) {
-    var that = this;
-
-    var callback = function() {
-        if (done) {
-            done(null, that);
-        }
-    };
-
-    this._importAllFiles(associatedDir, callback);
+Namespace.prototype.importAllFilesInDirectory = function(associatedDir) {
+    this.lazilyExportAllFiles(associatedDir);
 }
 
-Namespace.prototype._importAllFiles = function(associatedDir, done) {
-    var that = this;
-    var allDone = done;
+Namespace.prototype.lazilyExportAllFiles = function(associatedDir) {
+    debugger;
+    var files = fs.readdirSync(associatedDir);
+    this.processFiles(files, associatedDir);
+}
 
-    var processFile = function(file, done) {
-        that.recursivelyExportFile(file, associatedDir, done);
-    };
-
-    var processFiles = function(err, files) {
-        if (!files)
-        {
-            winston.info("No files in directory for namespace.")
-            return;
-        }
-
-        async.forEach(files, processFile, allDone);
+Namespace.prototype.processFiles = function(files, associatedDir) {
+    if (!files)
+    {
+        winston.info("No files in directory for namespace.")
+        return;
     }
 
-    fs.readdir(associatedDir, processFiles);
-}
+    for(var i = 0; i < files.length; i++) {
+        this.processFile(files[i], associatedDir);
+    }
+};
+
+Namespace.prototype.processFile = function(file, associatedDir) {
+    this.recursivelyExportFile(file, associatedDir);
+};
 
 Namespace.prototype.useToExtend = function(toExtend) {
     _u.extend(toExtend, this);
 };
 
-Namespace.prototype.recursivelyExportFile = function(file, parentDirectory, done) {
-    var that = this;
+Namespace.prototype.recursivelyExportFile = function(file, parentDirectory) {
     var fullPathToFile = parentDirectory + file;
 
-    fs.stat(fullPathToFile, function(err, fileStats) {
-        if (fileStats.isDirectory())
-        {
-            that._importAllFiles(fullPathToFile + "/", done)
-        }
-        else
-        {
-            that.lazilyExportFile(file, fullPathToFile, done);
-        }
-    });
+    var fileStats = fs.statSync(fullPathToFile);
+
+    if (fileStats.isDirectory())
+    {
+        this.lazilyExportAllFiles(fullPathToFile + "/")
+    }
+    else
+    {
+        this.lazilyExportFile(file, fullPathToFile);
+    }
 };
 
-Namespace.prototype.lazilyExportFile = function(file, fullPathToFile, done) {
+Namespace.prototype.lazilyExportFile = function(file, fullPathToFile) {
     var fileNameMinusExtension = file.substr(0, file.lastIndexOf('.'));
 
     winston.info("Registering " + fileNameMinusExtension);
@@ -70,8 +62,6 @@ Namespace.prototype.lazilyExportFile = function(file, fullPathToFile, done) {
         var required = require(fullPathToFile);
         return required;
     };
-
-    done();
 };
 
 Namespace.prototype.require = function(dependency) {

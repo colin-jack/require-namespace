@@ -5,11 +5,12 @@ var Namespace = require('./Namespace');
 module.exports = (function() {
     var namespaces = [];
 
-    var registerNamespace = function(name, associatedDir, done) {
+    var createSync = function(name, associatedDir) {
         try
         {
             var namespace = new Namespace(name);
-            namespace.importAllFilesInDirectory(associatedDir, done);
+
+            namespace.importAllFilesInDirectory(associatedDir);
 
             namespaces.push(namespace);
 
@@ -28,7 +29,7 @@ module.exports = (function() {
         });
     }
 
-    getNamespace.create = registerNamespace;
+    getNamespace.createSync = createSync;
 
     return getNamespace;
 })();

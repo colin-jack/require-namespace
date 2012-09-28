@@ -7,9 +7,10 @@ var correctReturnValue = 'being returned by dependency';
 vows.describe('require all files in directory').addBatch({
     'when requiring a simple hierarchy': {
         topic: function () { 
-            namespace.create('domain', __dirname + '/files/simple_hierarchy_namespace_global/', this.callback); 
+            return namespace.createSync('domain', __dirname + '/files/simple_hierarchy_namespace_global/'); 
         },
         'we can require a module with dependencies based on a namespace in a global object': function (namespace) {
+            debugger;
             var root = namespace.require('root');
 
             assert.equal (root(), correctReturnValue);
@@ -22,7 +23,7 @@ vows.describe('require all files in directory').addBatch({
 vows.describe('require all files in directory').addBatch({
     'when requiring a simple hierarchy': {
         topic: function () { 
-            namespace.create('domain', __dirname + '/files/simple_hierarchy/', this.callback); 
+            return namespace.createSync('domain', __dirname + '/files/simple_hierarchy/'); 
         },
         'we can require a module with dependencies': function (namespace) {
             var root = namespace.require('root');

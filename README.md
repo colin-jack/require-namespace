@@ -5,7 +5,7 @@ NOTE - This project is a very early alpha.
 During initialisation you create a namespace and associate it with a directory:
 
 ```js
-namespace.create('domain', __dirname + '/server/javascript/domain/', done)
+namespace.createSync('domain', __dirname + '/server/javascript/domain/')
 ```
 
 At this point the directory is recursively scanned and a record of each file is kept. Anywhere that you want to require modules from the namespace you can do so simply:
@@ -33,7 +33,7 @@ domain
 Creating the namespace and then resolving dependencies from it:
 
 ```js
-var domain = namespace.create('domain', __dirname + '/server/javascript/domain/', done);
+var domain = namespace.createSync('domain', __dirname + '/server/javascript/domain/');
 var twitterAuthentication = domain.require('twitterAuthentication'); // NOTE - Doesn't matter that it was in a sub-directory
 var twitterAuthentication = domain.require('user');
 ```
