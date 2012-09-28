@@ -11,7 +11,7 @@ namespace.create('domain', __dirname + '/server/javascript/domain/', done)
 At this point the directory is recursively scanned and a record of each file is kept. Anywhere that you want to require modules from the namespace you can do so simply:
 
 ```js
-var domain = require('namespace')('domain')
+var domain = require('require-namespace')('domain')
 var TwitterConfigFactory = domain.require('TwitterConfigFactory')
 ```
 
