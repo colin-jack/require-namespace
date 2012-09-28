@@ -1,5 +1,5 @@
-var namespace = require('../../../index');
-var dependedOn = namespace('domain').require('dependedOnLevel3');
+var domain = require('../../../index')('domain');
+var dependedOn = domain.require('dependedOnLevel3');
 
 module.exports = function() {
 	return dependedOn();

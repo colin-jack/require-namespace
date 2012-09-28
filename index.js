@@ -12,8 +12,10 @@ Namespace.prototype.exportAllFiles = function(done) {
     var that = this;
 
     var callback = function() {
-        done(null, that);
-    }
+        if (done) {
+            done(null, that);
+        }
+    };
 
     this.lazilyExportAllFiles(this.associatedDir, callback);
 }
@@ -33,9 +35,7 @@ Namespace.prototype.lazilyExportAllFiles = function(associatedDir, done) {
             return;
         }
 
-        async.forEach(files, processFile, function() {
-            allDone();
-        });
+        async.forEach(files, processFile, allDone);
     }
 
     fs.readdir(associatedDir, processFiles);

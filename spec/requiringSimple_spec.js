@@ -9,15 +9,14 @@ vows.describe('require all files in directory').addBatch({
         topic: function () { 
             namespace.create('domain', __dirname + '/files/simple_hierarchy_namespace_global/', this.callback); 
         },
-        'we can require a module with dependencies based on a namespace in a global object': function (err, namespace) {
-            global.domain = namespace;
+        'we can require a module with dependencies based on a namespace in a global object': function (namespace) {
             var root = namespace.require('root');
 
             assert.equal (root(), correctReturnValue);
         },
 
     }
-}).run();
+}).export(module);
 
 
 vows.describe('require all files in directory').addBatch({
@@ -25,22 +24,22 @@ vows.describe('require all files in directory').addBatch({
         topic: function () { 
             namespace.create('domain', __dirname + '/files/simple_hierarchy/', this.callback); 
         },
-        'we can require a module with dependencies': function (err, namespace) {
+        'we can require a module with dependencies': function (namespace) {
             var root = namespace.require('root');
 
             assert.equal (root(), correctReturnValue);
         },
-        'we can access the module directly on the namespace': function (err, namespace) {
+        'we can access the module directly on the namespace': function (namespace) {
             var root = namespace.root();
 
             assert.equal (root(), correctReturnValue);
         },
-        'we can access an exported object directly': function(err, namespace) {
+        'we can access an exported object directly': function(namespace) {
             var exported = namespace.require('exporting_object');
             assert.equal(exported.getConstantValue(), 89);
         }
     }
-}).run();
+}).export(module);
 
 // TODO: No "/" at end of path.
 // TODO: Invalid path.
@@ -51,3 +50,4 @@ vows.describe('require all files in directory').addBatch({
 // TODO: No files in directory
 // TODO: useToExtend
 // TODO: Export is for a function
+// TODO: Pass in no callback
