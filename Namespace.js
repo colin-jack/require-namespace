@@ -3,12 +3,11 @@ var async = require('async');
 var _u = require('underscore');
 var winston = require('winston');
 
-var Namespace = function(name, associatedDir, done) {
-    this.associatedDir = associatedDir;
+var Namespace = function(name, associatedDir) {
     this.name = name;
 }
 
-Namespace.prototype.exportAllFiles = function(done) {
+Namespace.prototype.importAllFilesInDirectory = function(associatedDir, done) {
     var that = this;
 
     var callback = function() {
@@ -17,10 +16,10 @@ Namespace.prototype.exportAllFiles = function(done) {
         }
     };
 
-    this.lazilyExportAllFiles(this.associatedDir, callback);
+    this._importAllFiles(associatedDir, callback);
 }
 
-Namespace.prototype.lazilyExportAllFiles = function(associatedDir, done) {
+Namespace.prototype._importAllFiles = function(associatedDir, done) {
     var that = this;
     var allDone = done;
 
@@ -52,7 +51,7 @@ Namespace.prototype.recursivelyExportFile = function(file, parentDirectory, done
     fs.stat(fullPathToFile, function(err, fileStats) {
         if (fileStats.isDirectory())
         {
-            that.lazilyExportAllFiles(fullPathToFile + "/", done)
+            that._importAllFiles(fullPathToFile + "/", done)
         }
         else
         {

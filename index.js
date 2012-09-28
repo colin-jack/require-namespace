@@ -1,5 +1,4 @@
 var _u = require('underscore');
-var async = require('async');
 var winston = require('winston');
 var Namespace = require('./Namespace');
 
@@ -9,16 +8,18 @@ module.exports = (function() {
     var registerNamespace = function(name, associatedDir, done) {
         try
         {
-            var group = new Namespace(name, associatedDir);
-            group.exportAllFiles(done);
-            namespaces.push(group);
+            var namespace = new Namespace(name);
+            namespace.importAllFilesInDirectory(associatedDir, done);
+
+            namespaces.push(namespace);
+
+            return namespace;
         }
         catch(ex)
         {
             winston.error('namespace: error registering: "' + ex + '"');
+            throw ex;
         }
-
-        return group;
     };
 
     var getNamespace = function(groupName) {
