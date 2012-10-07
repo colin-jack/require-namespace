@@ -12,7 +12,6 @@ Namespace.prototype.importAllFilesInDirectory = function(associatedDir) {
 }
 
 Namespace.prototype.lazilyExportAllFiles = function(associatedDir) {
-    debugger;
     var files = fs.readdirSync(associatedDir);
     this.processFiles(files, associatedDir);
 }

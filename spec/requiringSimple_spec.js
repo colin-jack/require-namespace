@@ -10,7 +10,6 @@ vows.describe('require all files in directory').addBatch({
             return namespace.createSync('domain', __dirname + '/files/simple_hierarchy_namespace_global/'); 
         },
         'we can require a module with dependencies based on a namespace in a global object': function (namespace) {
-            debugger;
             var root = namespace.require('root');
 
             assert.equal (root(), correctReturnValue);
