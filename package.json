@@ -1,16 +1,16 @@
 {
     "name" : "require-namespace",
-    "version" : "0.0.4",
+    "version" : "0.0.6",
     "description" : "Simplifies requiring of modules by adding an intermediate namespace, where each namespace is associated with a directory.",
     "main" : "index",
     "author": "Colin Jack",
 
     "repository": {
         "type": "git",
-        "url": "git://github.com/woodlouse81/namespace.git"
+        "url": "git://github.com/colin-jack/require-namespace.git"
     },
 
-    "homepage": "https://github.com/woodlouse81/namespace",
+    "homepage": "https://github.com/colin-jack/require-namespace",
 
     "dependencies": {
         "winston": "*",
