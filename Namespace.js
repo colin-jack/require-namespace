@@ -64,7 +64,7 @@ Namespace.prototype.lazilyExportFile = function(file, fullPathToFile) {
 };
 
 Namespace.prototype.require = function(dependency) {
-    winston.info("Require: " + dependency);
+    //winston.info("Require: " + dependency);
     var toReturn = this[dependency]();
     return toReturn;
 }
