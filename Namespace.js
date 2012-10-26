@@ -54,7 +54,7 @@ Namespace.prototype.recursivelyExportFile = function(file, parentDirectory) {
 Namespace.prototype.lazilyExportFile = function(file, fullPathToFile) {
     var fileNameMinusExtension = file.substr(0, file.lastIndexOf('.'));
 
-    winston.info("Registering " + fileNameMinusExtension);
+    //winston.info("Registering " + fileNameMinusExtension);
 
     // Wrap it in a function so we only require when the client actually asks for the dependency.
     this[fileNameMinusExtension] = function () {
