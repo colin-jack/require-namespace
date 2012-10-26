@@ -1,4 +1,4 @@
-## Node.js Namespaces
+## require-namespace
 When you require modules in node.js you include the path to the file which means that moving files break dependent modules. 
 
 To avoid that issue the new notion of a namespace allows you to require a dependency in a way that is more loosely coupled to the directory structure on disk.
