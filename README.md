@@ -28,6 +28,6 @@ The project comes with an example that you can run using
     node examples/simple.js
 
 ## Tests
-The tests use [vows](http://vowsjs.org/) and can be run using:
+The tests use [mocha](hhttp://mochajs.org/) and can be run using:
 
     mocha spec/requiringSimple_test
