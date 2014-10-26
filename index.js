@@ -3,8 +3,6 @@ var winston = require('winston');
 var Namespace = require('./Namespace');
 
 module.exports = (function() {
-    var namespaces = [];
-
     var createSync = function(associatedDir, name) {
         try
         {
@@ -15,8 +13,10 @@ module.exports = (function() {
             }
 
             namespace.importAllFilesInDirectory(associatedDir);
-
-            namespaces.push(namespace);
+            
+            if (name) {
+                this[name] = namespace;
+            }
 
             return namespace;
         }
@@ -27,13 +27,7 @@ module.exports = (function() {
         }
     };
 
-    var getNamespace = function(groupName) {
-        return _u.find(namespaces, function(group) {
-            return group.name === groupName;
-        });
-    }
-
-    getNamespace.createSync = createSync;
-
-    return getNamespace;
+    return {
+        createSync: createSync
+    };
 })();

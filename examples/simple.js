@@ -1,11 +1,11 @@
 var namespace = require('./../index'),
     log = require('util').log;
 
-namespace.createSync(__dirname + '/domain', 'domain')
-var domain = namespace("domain");
+// all files in the directory will be added to a namespace called combiners
+namespace.createSync(__dirname + '/domain', 'combiners')
 
-global.domain = domain;
+var combiners = namespace.combiners;
 
-var theCombiner = domain.combiner;
+var theCombiner = combiners.combineFirstAndSecond;
 
 log(theCombiner());

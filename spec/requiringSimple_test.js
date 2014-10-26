@@ -8,18 +8,27 @@ describe('require all files in directory', function () {
     
     describe('when requiring a simple hierarchy', function () {
         beforeEach(function (done) {
+            debugger;
             namespace = underTest.createSync(__dirname + '/files/simple_hierarchy_namespace_global/', 'domain');
             done();
         });
         
-        it('we can require a module with dependencies', function () {
+        it('should create a namespace object', function () {
+            assert.isNotNull(namespace);
+        });
+        
+        it('should have the available modules on the namespace', function () {
+            assert.isNotNull(namespace.root);
+        });
+        
+        it('we can require a module from the namespace', function () {
             var root = namespace.root;
             
             assert.equal(root(), ExpectedReturnValue);
         });
 
         it('should be possible to get the entire namespace by name', function () {
-            assert.equal(underTest("domain").root, namespace.root);
+            assert.equal(underTest.domain.root, namespace.root);
         });
     });
 
@@ -30,12 +39,6 @@ describe('require all files in directory', function () {
         });
 
         it('we can require a module with dependencies', function () {
-            var root = namespace.require('root');
-            
-            assert.equal(root(), ExpectedReturnValue);
-        });
-        
-        it('we can require a module with dependencies using property', function () {
             var root = namespace.root;
             
             assert.equal(root(), ExpectedReturnValue);
@@ -48,7 +51,7 @@ describe('require all files in directory', function () {
         });
         
         it('we can access an exported object directly', function () {
-            var exported = namespace.require('exporting_object');
+            var exported = namespace.exporting_object;
             assert.equal(exported.getConstantValue(), 89);
         });
     });
@@ -60,7 +63,7 @@ describe('require all files in directory', function () {
         });
         
         it('we can require a module with dependencies', function () {
-            var root = namespace.require('root');
+            var root = namespace.root;
             
             assert.equal(root(), ExpectedReturnValue);
         });

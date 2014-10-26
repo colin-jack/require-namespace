@@ -1,4 +1,4 @@
-var domain = require('../../../index')('domain');
+var domain = require('../../../index').domain;
 
 dependedOnLevel3 = domain.require('dependedOnLevel3');
 

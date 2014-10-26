@@ -9,19 +9,17 @@ To avoid that issue the new notion of a namespace allows you to require a depend
 ### Usage
 During initialisation you synchronously create a namespace and associate it with a directory:
 ```js
-global.domain = namespace.createSync(__dirname + '/domain/')
+namespace.createSync(__dirname + '/model/', 'domain')
 ```
-At this point the directory is recursively scanned and a record of each file is kept. Since we saved the namespace to a global variable we can then require files from it like this:
-```js
-var linkProcessor = domain.LinkContentProcessor
-```
-That require will work if there was a file called 'LinkContentProcessor' anywhere within the directory we used when creating the namespace. 
+The second argument provides the name of the namespace.
 
-If we don't want to use a global variable for the namespace then requiring becomes a bit more wordy:
+At this point the directory is recursively scanned and a record of each file is kept. Once this is done we can access the modules from the namespace:
 ```js
-var domain = require('require-namespace')('domain')
-var linkProcessor = domain.LinkContentProcessor
+var domain = namespace.domain;
+var linkProcessor = domain.LinkContentProcessor;
 ```
+That require will work if there was a file called 'LinkContentProcessor.js' anywhere within the directory we used when creating the namespace. 
+
 ## Example
 The project comes with an example that you can run using
 
