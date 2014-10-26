@@ -9,11 +9,11 @@ To avoid that issue the new notion of a namespace allows you to require a depend
 ### Usage
 During initialisation you synchronously create a namespace and associate it with a directory:
 ```js
-global.domain = namespace.createSync('domain', __dirname + '/domain/')
+global.domain = namespace.createSync(__dirname + '/domain/')
 ```
 At this point the directory is recursively scanned and a record of each file is kept. Since we saved the namespace to a global variable we can then require files from it like this:
 ```js
-var LinkContentProcessor = domain.require('LinkContentProcessor')
+var linkProcessor = domain.LinkContentProcessor // alternaitvely you can use domain.require('LinkContentProcessor')
 ```
 That require will work if there was a file called 'LinkContentProcessor' anywhere within the directory we used when creating the namespace. 
 

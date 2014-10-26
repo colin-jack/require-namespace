@@ -1,7 +1,11 @@
 var namespace = require('./../index'),
     log = require('util').log;
 
-global.domain = namespace.createSync('domain', __dirname + '/domain/')
-var combiner = domain.require('combiner')
+namespace.createSync(__dirname + '/domain', 'domain')
+var domain = namespace("domain");
 
-log(combiner());
+global.domain = domain;
+
+var theCombiner = domain.combiner;
+
+log(theCombiner());

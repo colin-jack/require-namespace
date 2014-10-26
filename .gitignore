@@ -1,3 +1,4 @@
 *~
 node_modules/*
 /*.sublime*
+/spec/requiringSimple_test.js

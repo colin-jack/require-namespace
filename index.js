@@ -5,10 +5,14 @@ var Namespace = require('./Namespace');
 module.exports = (function() {
     var namespaces = [];
 
-    var createSync = function(name, associatedDir) {
+    var createSync = function(associatedDir, name) {
         try
         {
             var namespace = new Namespace(name);
+            
+            if (associatedDir.lastIndexOf("/") < associatedDir.length - 1) {
+                associatedDir += "/";
+            }
 
             namespace.importAllFilesInDirectory(associatedDir);
 

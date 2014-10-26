@@ -3,8 +3,8 @@ var async = require('async');
 var _u = require('underscore');
 var winston = require('winston');
 
-var Namespace = function(name, associatedDir) {
-    this.name = name;
+var Namespace = function (name) {
+    if (name) this.name = name;
 }
 
 Namespace.prototype.importAllFilesInDirectory = function(associatedDir) {
@@ -53,20 +53,19 @@ Namespace.prototype.recursivelyExportFile = function(file, parentDirectory) {
 
 Namespace.prototype.lazilyExportFile = function(file, fullPathToFile) {
     var fileNameMinusExtension = file.substr(0, file.lastIndexOf('.'));
-
+    
     //winston.info("Registering " + fileNameMinusExtension);
-
-    // Wrap it in a function so we only require when the client actually asks for the dependency.
-    this[fileNameMinusExtension] = function () {
+    
+    var getter = function () {
         var required = require(fullPathToFile);
         return required;
     };
+
+    Object.defineProperty(this, fileNameMinusExtension, { get: getter });
 };
 
 Namespace.prototype.require = function(dependency) {
-    //winston.info("Require: " + dependency);
-    var toReturn = this[dependency]();
-    return toReturn;
+    return this[dependency];
 }
 
 module.exports = Namespace;

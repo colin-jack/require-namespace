@@ -1,6 +1,6 @@
 {
     "name" : "require-namespace",
-    "version" : "0.1.1",
+    "version" : "0.1.2",
     
     "description" : "Namespace support for node.js, making it easy to require an entire directory.",
     
@@ -22,7 +22,8 @@
     },
     
     "devDependencies": {
-        "vows": "0.6.x"
+        "mocha": "*",
+        "chai": "*"
     },
 
     "keywords": [
@@ -31,7 +32,7 @@
     ],
 
     "scripts": {
-        "test": "vows spec/*_spec.js --spec"
+        "test": "mocha spec/*_spec.js --spec"
     },
 
     "engines": { "node": ">= 0.4.0" }
