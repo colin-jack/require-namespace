@@ -1,6 +1,6 @@
 {
     "name" : "require-namespace",
-    "version" : "0.1.2",
+    "version" : "0.2.0",
     
     "description" : "Namespace support for node.js, making it easy to require an entire directory.",
     
