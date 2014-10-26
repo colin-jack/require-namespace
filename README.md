@@ -13,7 +13,7 @@ global.domain = namespace.createSync(__dirname + '/domain/')
 ```
 At this point the directory is recursively scanned and a record of each file is kept. Since we saved the namespace to a global variable we can then require files from it like this:
 ```js
-var linkProcessor = domain.LinkContentProcessor // alternaitvely you can use domain.require('LinkContentProcessor')
+var linkProcessor = domain.LinkContentProcessor // alternaitvely domain.require('LinkContentProcessor')
 ```
 That require will work if there was a file called 'LinkContentProcessor' anywhere within the directory we used when creating the namespace. 
 
@@ -30,8 +30,4 @@ The project comes with an example that you can run using
 ## Tests
 The tests use [vows](http://vowsjs.org/) and can be run using:
 
-    vows spec/*_spec.js
-
-## What next
-  * More tests
-  * More examples
+    mocha spec/requiringSimple_test
