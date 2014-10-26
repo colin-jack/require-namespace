@@ -13,14 +13,14 @@ global.domain = namespace.createSync(__dirname + '/domain/')
 ```
 At this point the directory is recursively scanned and a record of each file is kept. Since we saved the namespace to a global variable we can then require files from it like this:
 ```js
-var linkProcessor = domain.LinkContentProcessor // alternaitvely domain.require('LinkContentProcessor')
+var linkProcessor = domain.LinkContentProcessor
 ```
 That require will work if there was a file called 'LinkContentProcessor' anywhere within the directory we used when creating the namespace. 
 
 If we don't want to use a global variable for the namespace then requiring becomes a bit more wordy:
 ```js
 var domain = require('require-namespace')('domain')
-var LinkContentProcessor = domain.require('LinkContentProcessor')
+var linkProcessor = domain.LinkContentProcessor
 ```
 ## Example
 The project comes with an example that you can run using
