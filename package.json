@@ -32,7 +32,7 @@
     ],
 
     "scripts": {
-        "test": "mocha -R spec spec/ --recursive"
+        "test": "mocha -R spec \"spec/**/*_spec.js\" --recursive"
     },
 
     "engines": { "node": ">= 0.4.0" }
