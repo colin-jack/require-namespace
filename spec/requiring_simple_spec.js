@@ -8,7 +8,6 @@ describe('require all files in directory', function () {
     
     describe('when requiring a simple hierarchy', function () {
         beforeEach(function (done) {
-            debugger;
             namespace = underTest.createSync(__dirname + '/files/simple_hierarchy_namespace_global/', 'domain');
             done();
         });

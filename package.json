@@ -1,6 +1,6 @@
 {
     "name" : "require-namespace",
-    "version" : "0.3.0",
+    "version" : "0.3.2",
     
     "description" : "Namespace support for node.js, making it easy to require an entire directory.",
     
@@ -32,7 +32,7 @@
     ],
 
     "scripts": {
-        "test": "mocha spec/*_spec.js --spec"
+        "test": "mocha -R spec spec/ --recursive"
     },
 
     "engines": { "node": ">= 0.4.0" }

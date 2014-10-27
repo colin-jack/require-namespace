@@ -28,4 +28,4 @@ The project comes with an example that you can run using
 ## Tests
 The tests use [mocha](hhttp://mochajs.org/) and can be run using:
 
-    mocha spec/requiringSimple_test
+    mocha -R spec "spec/**/*_spec.js" --recursive
