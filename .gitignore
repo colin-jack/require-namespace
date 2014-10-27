@@ -8,3 +8,5 @@ npm-debug.log
 *.suo
 *.sln
 *.njsproj
+*.dll
+.ntvs*.dat
