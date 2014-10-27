@@ -1,6 +1,5 @@
 var assert = require('chai').assert;
 var underTest = require('../index');
-var NamespaceCreationFailedError = require('../NamespaceCreationFailedError')
 
 describe('require all files in directory', function () {
     describe('when requiring from directory containing two files with same name', function () {
