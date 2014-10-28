@@ -9,6 +9,7 @@ To avoid that issue the new notion of a namespace allows you to require a depend
 ### Usage
 During initialisation you synchronously create a namespace and associate it with a directory:
 ```js
+var namespace = require('require-namespace');
 namespace.createSync(__dirname + '/model/', 'domain')
 ```
 The second argument provides the name of the namespace.
