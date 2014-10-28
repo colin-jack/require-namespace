@@ -6,7 +6,7 @@ describe('require all files in directory', function () {
     
     describe('when requiring from directory with other files', function () {
         beforeEach(function (done) {
-            namespace = underTest.createSync(__dirname + '/files/with_inappropriate_files/', 'domain');
+            namespace = underTest.createSync(__dirname + '/files/with_inappropriate_files/');
             done();
         });
         

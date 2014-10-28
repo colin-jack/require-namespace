@@ -1,46 +1,48 @@
 ﻿var assert = require('chai').assert;
-var RegistersResources = lib.require('RegistersResources');
+var underTest = require('../index');
 
-describe('RegistersResources', function () {
+describe('creating namespace', function () {
+    var ExpectedNoDirectoryNameSpecifiedMessage = /You must provide the directory path to scan/;
+
     describe("invalid directory path provided", function () {
         var validFakeExpressInstance = { use: function () { } };
         
         describe("when given null directory", function () {
             it("should raise an exception", function () {
-                assert.throws(function () {
-                    RegistersResources.registerAllInDirectory(null, validFakeExpressInstance)
-                }, /You must provide the directory path to scan./)
+                assert.throw(function () {
+                    underTest.createSync(null, "name1")
+                }, ExpectedNoDirectoryNameSpecifiedMessage)
             })
         });
         
         describe("when given undefined directory", function () {
             it("should raise an exception", function () {
                 assert.throws(function () {
-                    RegistersResources.registerAllInDirectory(undefined, validFakeExpressInstance)
-                }, /You must provide the directory path to scan./)
+                    underTest.createSync(undefined, "name2")
+                }, ExpectedNoDirectoryNameSpecifiedMessage)
             })
         });
         
         describe("when given non-string directory", function () {
             it("should raise an exception", function () {
                 assert.throws(function () {
-                    RegistersResources.registerAllInDirectory(5, validFakeExpressInstance)
-                }, /You must provide the directory path to scan./)
+                    underTest.createSync(5, "name3")
+                }, ExpectedNoDirectoryNameSpecifiedMessage)
             })
         });
         
         describe("when given empty directory", function () {
             it("should raise an exception", function () {
                 assert.throws(function () {
-                    RegistersResources.registerAllInDirectory("", validFakeExpressInstance)
-                }, /You must provide the directory path to scan./)
+                    underTest.createSync("", "name4")
+                }, ExpectedNoDirectoryNameSpecifiedMessage)
             })
         });
         
         describe("when given directory path is to non-existent directory", function () {
             it("should raise an exception", function () {
                 assert.throws(function () {
-                    RegistersResources.registerAllInDirectory("c:\\foo\\bar\\this\\is\\not\\going\\to\\exist", validFakeExpressInstance)
+                    underTest.createSync("c:\\foo\\bar\\this\\is\\not\\going\\to\\exist", "name6")
                 }, "The specified directory does not exist c:\\foo\\bar\\this\\is\\not\\going\\to\\exist")
             })
         });
