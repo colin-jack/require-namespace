@@ -22,7 +22,7 @@ var linkProcessor = domain.LinkContentProcessor;
 ```
 That require will work if there was a file called 'LinkContentProcessor.js' anywhere within the directory we used when creating the namespace. 
 
-Note also that the '''createSync''' method returns the created namespace and that if you prefer you can use '''domain.require("LinkContentProcessor")''' rather than '''domain.LinkContentProcessor'''.
+Note also that the createSync method returns the created namespace and that if you prefer you can use domain.require("LinkContentProcessor") rather than domain.LinkContentProcessor.
 
 ## Example
 The project comes with an example that you can run using
