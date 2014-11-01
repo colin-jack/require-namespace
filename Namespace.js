@@ -1,5 +1,4 @@
 var fs = require('fs');
-var async = require('async');
 var _u = require('underscore');
 var winston = require('winston');
 

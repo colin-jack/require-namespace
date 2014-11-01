@@ -1,8 +1,8 @@
 {
     "name" : "require-namespace",
-    "version" : "0.3.3",
+    "version" : "0.3.41",
     
-    "description" : "Namespace support for node.js, making it easy to require an entire directory.",
+    "description" : "Namespace support for node.js, making it easy to require a module without specifying the path to its file.",
     
     "main" : "index",
 
@@ -17,7 +17,6 @@
 
     "dependencies": {
         "winston": "*",
-        "async": "*",
         "underscore": "*"
     },
     
@@ -28,7 +27,9 @@
 
     "keywords": [
         "util",
-        "require"
+        "require",
+        "namespace",
+        "dependency"
     ],
 
     "scripts": {
