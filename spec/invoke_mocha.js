@@ -6,12 +6,12 @@ var Mocha = require('mocha'),
 // First, you need to instantiate a Mocha instance.
 var mocha = new Mocha({ timeout: 10000 });
 
-var testDirectory = __dirname + "/creating_namespace";
+var testDirectory = __dirname + "/";
 
 // Here is an example:
 fs.readdirSync(testDirectory).filter(function (file) {
     // Only keep the .js files
-    return file.substr(-3) === '.js' && file.indexOf("invalid_name_spec") !== -1;
+    return file.substr(-3) === '.js';// && file.indexOf("invalid_name_spec") !== -1;
 
 }).forEach(function (file) {
     // Use the method "addFile" to add the file to mocha
