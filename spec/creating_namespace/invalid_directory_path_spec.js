@@ -1,5 +1,5 @@
 ﻿var assert = require('chai').assert;
-var underTest = require('../index');
+var underTest = require('../../index');
 
 describe('creating namespace', function () {
     var ExpectedNoDirectoryNameSpecifiedMessage = /You must provide the directory path to scan/;

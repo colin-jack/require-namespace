@@ -8,7 +8,7 @@ describe('require all files in directory', function () {
     
     describe('when requiring a simple hierarchy', function () {
         beforeEach(function (done) {
-            underTest.removeNamespace('domain')
+            underTest.remove('domain')
             namespace = underTest.createSync(__dirname + '/files/simple_hierarchy_namespace_global/', 'domain');
             done();
         });
@@ -34,13 +34,13 @@ describe('require all files in directory', function () {
 
     describe('when requiring a simple hierarchy', function() {
         beforeEach(function (done) {
-            underTest.removeNamespace('domain')
+            underTest.remove('domain')
             namespace = underTest.createSync(__dirname + '/files/simple_hierarchy/', 'domain');
             done();
         });
         
         afterEach(function () {
-            underTest.removeNamespace('domain')
+            underTest.remove('domain')
         });
 
         it('we can require a module with dependencies', function () {
@@ -80,9 +80,6 @@ describe('require all files in directory', function () {
 });
 
 
-// TODO: Invalid path.
-// TODO: Multiple files with same name.
-// TODO: Directory does not exist.
 // TODO: Ignore casing
 // TODO: Example
 // TODO: No files in directory

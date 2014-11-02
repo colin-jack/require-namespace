@@ -1,8 +1,8 @@
 {
     "name" : "require-namespace",
-    "version" : "0.3.41",
+    "version" : "0.3.42",
     
-    "description" : "Namespace support for node.js, making it easy to require a module without specifying the path to its file.",
+    "description" : "Namespace support for node.js, making it easy to require a module without specifying the path to its file, and easy to register a double when testing.",
     
     "main" : "index",
 
@@ -22,14 +22,22 @@
     
     "devDependencies": {
         "mocha": "*",
-        "chai": "*"
+        "chai": "*",
+        "sinon": "*"
     },
 
     "keywords": [
         "util",
+        "inject",
+        "test",
         "require",
         "namespace",
-        "dependency"
+        "dependency",
+        "injection",
+        "unit test",
+        "mock",
+        "stub",
+        "double"
     ],
 
     "scripts": {
