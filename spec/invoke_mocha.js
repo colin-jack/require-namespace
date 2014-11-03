@@ -6,7 +6,7 @@ var Mocha = require('mocha'),
 // First, you need to instantiate a Mocha instance.
 var mocha = new Mocha({ timeout: 60000 });
 
-var testDirectory = __dirname + "/property_assigners";
+var testDirectory = __dirname + "/module_loaders";
 
 // Here is an example:
 fs.readdirSync(testDirectory).filter(function (file) {
