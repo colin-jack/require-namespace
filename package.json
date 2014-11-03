@@ -29,15 +29,9 @@
     "keywords": [
         "util",
         "inject",
-        "test",
         "require",
         "namespace",
-        "dependency",
-        "injection",
-        "unit test",
-        "mock",
-        "stub",
-        "double"
+        "dependency"
     ],
 
     "scripts": {
