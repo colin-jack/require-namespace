@@ -1,8 +1,8 @@
 {
     "name" : "require-namespace",
-    "version" : "0.3.43",
+    "version" : "0.3.44",
     
-    "description" : "Namespace support for node.js, making it easy to require a module without specifying the path to its file, and easy to register a double when testing.",
+    "description" : "Namespace support for node.js, making it easy to require a module without specifying the path to its file.",
     
     "main" : "index",
 
